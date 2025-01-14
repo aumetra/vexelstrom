@@ -13,9 +13,10 @@
 	});
 </script>
 
-{#snippet template(args: { primary?: boolean })}
-	<Button primary={args.primary ?? true}>Hello world</Button>
+<!-- eslint-disable-next-line @typescript-eslint/no-explicit-any -->
+{#snippet template(args: any)}
+	<Button primary={args.primary ?? true} onclick={args.onclick}>Hello world</Button>
 {/snippet}
 
-<Story name="Primary" children={template} />
-<Story name="Secondary" children={template} />
+<Story name="Primary" args={{ primary: true }} children={template} />
+<Story name="Secondary" args={{ primary: false }} children={template} />
