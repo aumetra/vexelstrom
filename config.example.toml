@@ -1,0 +1,16 @@
+# Example configuration file
+#
+# Here we try to show you how a configuration file _can_ look like.
+# We try to not make any obvious mistakes here, but if you spot some, please open an issue :3
+
+# Here everything regarding the database is configured.
+# This includes the connection string, amount of connections held by the pool, etc.
+[database]
+url = "postgres://vexelstrom@localhost/vexelstrom_dev"
+num-conns = 5
+
+# This section contains things that affect the actual underlying HTTP server.
+# Things like the interface the server is listening on and the port.
+[server]
+interface = "0.0.0.0"
+port = 5000
