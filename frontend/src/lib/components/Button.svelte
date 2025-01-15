@@ -6,11 +6,11 @@
 		children,
 		primary = true,
 		...props
-	}: { children: Snippet; primary: boolean } & HTMLButtonAttributes = $props();
+	}: { children: Snippet; primary?: boolean } & HTMLButtonAttributes = $props();
 </script>
 
 <button
-	class="rounded-lg p-2"
+	class="rounded-lg px-4 py-2"
 	class:bg-purple-500={primary}
 	class:bg-transparent={!primary}
 	class:text-white={primary}
