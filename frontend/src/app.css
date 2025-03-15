@@ -1,6 +1,9 @@
 @import 'tailwindcss';
-@plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+@plugin 'daisyui' {
+	themes: synthwave;
+}
 
 @layer base {
 	body {

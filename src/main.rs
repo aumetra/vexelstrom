@@ -19,9 +19,17 @@ async fn main() -> eyre::Result<()> {
     color_eyre::install()?;
 
     let args = Cli::parse();
-    let _config = Configuration::load(args.config).await?;
+    let config = Configuration::load(args.config).await?;
+
+    let db_pool = vexelstrom::db::connect(&config).await?;
 
     info!(version = VERSION, "starting vexelstrom");
+
+    let handle = tokio::spawn(vexelstrom::http::serve(config));
+
+    tokio::select! {
+        result = handle => result??,
+    }
 
     Ok(())
 }

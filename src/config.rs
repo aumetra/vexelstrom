@@ -3,21 +3,21 @@ use std::{net::IpAddr, num::NonZeroUsize, path::Path};
 
 const MIN_RECOMMENDED_DB_CONNS: usize = 5;
 
-#[derive(Deserialize)]
+#[derive(Clone, Deserialize)]
 #[serde(rename_all = "kebab-case")]
 pub struct DatabaseConfiguration {
     pub url: String,
     pub num_conns: NonZeroUsize,
 }
 
-#[derive(Deserialize)]
+#[derive(Clone, Deserialize)]
 #[serde(rename_all = "kebab-case")]
 pub struct ServerConfiguration {
     pub interface: IpAddr,
     pub port: u16,
 }
 
-#[derive(Deserialize)]
+#[derive(Clone, Deserialize)]
 #[serde(rename_all = "kebab-case")]
 pub struct Configuration {
     pub database: DatabaseConfiguration,

@@ -6,7 +6,7 @@
 # Here everything regarding the database is configured.
 # This includes the connection string, amount of connections held by the pool, etc.
 [database]
-url = "postgres://vexelstrom@localhost/vexelstrom_dev"
+url = "postgres://localhost/vexelstrom_dev"
 num-conns = 5
 
 # This section contains things that affect the actual underlying HTTP server.

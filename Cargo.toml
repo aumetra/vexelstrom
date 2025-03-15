@@ -3,22 +3,39 @@ name = "vexelstrom"
 description = "Experimental podcasting software"
 version = "0.1.0"
 edition = "2024"
+build = "build.rs"
 
 [dependencies]
+argon2 = { version = "0.5.3", features = ["std"] }
 axum = "0.8.1"
+axum-valid = { version = "0.23.0", default-features = false, features = [
+    "basic",
+    "garde",
+] }
 clap = { version = "4.5.32", features = ["derive", "wrap_help"] }
 color-eyre = "0.6.3"
 const_format = "0.2.34"
+diesel = { version = "2.2.8", features = ["postgres_backend", "time", "uuid"] }
 diesel-async = { version = "0.5.2", features = [
+    "async-connection-wrapper",
     "bb8",
     "pool",
     "postgres",
-    "sync-connection-wrapper",
 ] }
+diesel_migrations = "2.2.0"
 eyre = "0.6.12"
+garde = { version = "0.22.0", features = ["derive", "email"] }
 git-version = "0.3.9"
+rand = "0.8.5"
 serde = { version = "1.0.219", features = ["derive"] }
+time = "0.3.39"
 tokio = { version = "1.44.1", features = ["full"] }
 toml = "0.8.20"
 tracing = "0.1.41"
 tracing-subscriber = "0.3.19"
+uuid = { version = "1.16.0", features = ["fast-rng", "serde", "v7"] }
+
+[profile.release]
+codegen-units = 1
+lto = true
+strip = true

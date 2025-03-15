@@ -16,7 +16,7 @@
 		<img class="w-full" src={cover} alt="Cover" />
 
 		<figcaption
-			class="absolute left-0 top-0 m-0 w-full bg-black opacity-0 transition hover:bg-opacity-50 hover:opacity-100"
+			class="hover:bg-opacity-50 absolute top-0 left-0 m-0 w-full bg-black opacity-0 transition hover:opacity-100"
 		>
 			<button
 				class="h-full w-full"

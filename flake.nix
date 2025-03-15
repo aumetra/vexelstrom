@@ -23,6 +23,12 @@
         devShells = rec {
           default = frontend;
 
+          backend = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              diesel-cli-ext
+            ];
+          };
+
           frontend = pkgs.mkShell {
             buildInputs = with pkgs; [
               nodejs
