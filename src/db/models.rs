@@ -3,11 +3,13 @@
 #![allow(unused)]
 #![allow(clippy::all)]
 
-use diesel::Queryable;
+use super::schema::*;
 use time::OffsetDateTime;
 
+use diesel::prelude::*;
 use uuid::Uuid;
-#[derive(Queryable, Debug)]
+#[derive(diesel::Identifiable, diesel::Selectable, diesel::Queryable)]
+#[diesel(table_name = users)]
 pub struct User {
     pub id: Uuid,
     pub username: String,

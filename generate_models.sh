@@ -2,4 +2,4 @@
 
 set -o errexit -o nounset -o pipefail
 
-diesel_ext -I "time::OffsetDateTime" -I "diesel::Queryable" --map "Timestamptz OffsetDateTime" > src/db/models.rs
+diesel_ext -t -d "diesel::Identifiable, diesel::Selectable, diesel::Queryable" -I "super::schema::*" -I "time::OffsetDateTime" --map "Timestamptz OffsetDateTime" > src/db/models.rs

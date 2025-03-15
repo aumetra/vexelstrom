@@ -3,7 +3,7 @@ extern crate tracing;
 
 use clap::Parser;
 use std::path::PathBuf;
-use vexelstrom::{config::Configuration, consts::VERSION};
+use vexelstrom::{config::Configuration, consts::VERSION, http::state::AppState};
 
 #[derive(Parser)]
 #[clap(about, version = VERSION)]
@@ -25,7 +25,11 @@ async fn main() -> eyre::Result<()> {
 
     info!(version = VERSION, "starting vexelstrom");
 
-    let handle = tokio::spawn(vexelstrom::http::serve(config));
+    let state = AppState {
+        pool: db_pool,
+        unit: (),
+    };
+    let handle = tokio::spawn(vexelstrom::http::serve(config, state));
 
     tokio::select! {
         result = handle => result??,
