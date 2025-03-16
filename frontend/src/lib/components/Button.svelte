@@ -5,17 +5,15 @@
 	let {
 		children,
 		primary = true,
+		loading = false,
 		...props
-	}: { children: Snippet; primary?: boolean } & HTMLButtonAttributes = $props();
+	}: { children: Snippet; primary?: boolean; loading?: boolean } & HTMLButtonAttributes = $props();
 </script>
 
-<button
-	class="rounded-lg px-4 py-2"
-	class:bg-purple-500={primary}
-	class:bg-transparent={!primary}
-	class:text-white={primary}
-	class:border={!primary}
-	{...props}
->
-	{@render children()}
+<button {...props} class="btn {props.class}" class:btn-primary={primary} disabled={loading}>
+	{#if loading}
+		<span class="loading loading-spinner"></span>
+	{:else}
+		{@render children()}
+	{/if}
 </button>

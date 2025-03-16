@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Button from '$lib/components/Button.svelte';
+
 	let loading = $state(false);
 
 	function onlogin(e: Event) {
@@ -19,13 +21,7 @@
 					<input type="password" class="input" placeholder="Password" disabled={loading} />
 
 					<p>
-						<button class="btn btn-primary w-full" onclick={onlogin} disabled={loading}>
-							{#if loading}
-								<span class="loading loading-spinner"></span>
-							{:else}
-								Login
-							{/if}
-						</button>
+						<Button class="w-full" onclick={onlogin} {loading}>Login</Button>
 					</p>
 				</form>
 			</div>
